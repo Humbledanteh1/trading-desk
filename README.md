@@ -1,27 +1,26 @@
 # Trading Desk
 
-A browser-based funded-account command center for manual tracking.
+A general-purpose, multi-asset trading workspace for watchlists, positions, risk planning and trade review.
 
-## Current features
-- Account settings: starting balance, equity, drawdown floor, profit target, payout cap and consistency limit.
-- Consistency monitor: best positive day divided by total net journal profit.
-- Daily P&L journal with local browser persistence and CSV export.
-- Drawdown buffer monitor.
-- Risk and estimated position-size calculator.
-- Payout-readiness checklist.
+## Features
+- Market watchlist with manual price updates and asset classes.
+- Open-position book with entry, stop, target, quantity and estimated planned risk.
+- Closed-trade journal with setup, execution grade, notes and CSV export.
+- Risk calculator for sizing and illustrative reward/risk target.
+- Performance summary: realized P&L, win rate, average win/loss and profit factor.
+- Desk notes for session plans and levels.
 
 ## Run locally
 Open `index.html` in a modern browser. No build step or dependencies are required.
 
 ## Deploy
-Import this repository into Vercel. It is a static site; use the repository root as the project root and leave the build command empty. Vercel will serve `index.html`.
+Import this repository into Vercel. It is a static site; use the repository root as the project root and leave the build command empty.
 
-## Important limitations
-- This is a manual tracking and planning tool. It does not connect to a broker, prop firm, exchange, or trading account.
-- Journal and settings are stored in the browser's localStorage on that device/browser. They are not synced to a server.
-- The consistency calculation uses best positive day / total net journal profit. Prop-firm definitions vary; verify the official rule, payout eligibility, drawdown model, trading-day minimums and risk limits with your provider.
-- Position sizing is an estimate. Confirm instrument contract specifications, pip/point value, commissions, slippage and lot constraints before trading.
-- No trade execution or automated order placement is included.
+## Data and safety
+- This version is manual-only. It has no live market feed, broker connection, account sync or order execution.
+- Watchlist, positions, journal and notes are stored in browser localStorage on the current device/browser.
+- Position sizing is an estimate. Verify contract specifications, pip/point value, lot increments, commissions and slippage for the instrument you trade.
+- Do not put API keys, passwords, wallet seed phrases or broker secrets in this repository.
 
-## Next step
-Choose the intended platform (for example MT5, cTrader, MatchTrader or Hyperliquid) before adding any account-data integration. Keep integrations read-only first and never commit API secrets to the repository.
+## Next
+Choose your preferred market-data and trading platform before adding integrations. Start with read-only data access; add execution only with explicit approvals and robust safeguards.
