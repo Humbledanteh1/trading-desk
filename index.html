@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020"><title>Trading Desk — Funded Account Command Center</title>
+<style>
+:root{color-scheme:dark;--bg:#090e1b;--panel:#111a2b;--panel2:#0d1525;--line:#243149;--muted:#8ea0bb;--text:#edf3ff;--green:#39d6a0;--red:#ff6b7a;--blue:#6ea8ff;--amber:#f6c66b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 15% -10%,#1c3153 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:1440px;margin:auto;padding:28px}.top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:26px}.brand{display:flex;gap:12px;align-items:center}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#3f83f8,#42d6a7);display:grid;place-items:center;color:#07111d;font-weight:900;font-size:20px}.eyebrow{color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase}.brand h1{font-size:20px;margin:0}.status{border:1px solid #285b50;background:#102b2a;color:#76e4bd;border-radius:99px;padding:7px 12px;font-size:12px}.sub{color:var(--muted);margin-top:3px}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.layout{grid-template-columns:minmax(0,1.65fr) minmax(300px,.85fr);align-items:start}.panel,.kpi{background:linear-gradient(180deg,rgba(19,29,48,.97),rgba(14,22,38,.97));border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 14px 40px #0002}.kpi .value{font-size:26px;font-weight:750;letter-spacing:-.04em;margin:8px 0 2px}.kpi .foot{color:var(--muted);font-size:12px}.positive{color:var(--green)}.negative{color:var(--red)}.muted{color:var(--muted)}.panel h2{font-size:15px;margin:0 0 4px}.panelhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px}.panelhead p{color:var(--muted);font-size:12px;margin:3px 0 0}.tag{font-size:11px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;color:var(--muted)}.bar{height:9px;background:#26344a;border-radius:99px;overflow:hidden;margin:12px 0 8px}.bar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#4389ff,#39d6a0);width:0%;transition:width .2s}.bar.warn>span{background:linear-gradient(90deg,#f6c66b,#ff6b7a)}.split{display:flex;justify-content:space-between;gap:12px;font-size:12px}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}.field input,.field select{width:100%;border:1px solid var(--line);background:#0a1221;color:var(--text);padding:10px 11px;border-radius:9px;outline:none}.field input:focus,.field select:focus{border-color:var(--blue)}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.btn{border:1px solid var(--line);background:#18253a;color:var(--text);border-radius:9px;padding:9px 12px;font-size:12px}.btn.primary{background:#2865d9;border-color:#3978ed;color:white}.btn.danger{color:#ff9aa4}.stack{display:grid;gap:16px}.metricline{display:flex;justify-content:space-between;gap:10px;margin:12px 0 5px}.metricline strong{font-size:13px}.notice{border:1px solid #5b4b28;background:#2b2416;color:#f4d58d;border-radius:11px;padding:11px 12px;font-size:12px;margin-top:13px}.notice.good{border-color:#285b50;background:#102b2a;color:#9ae9ce}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:510px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);font-size:12px}th{color:var(--muted);font-weight:500}td{color:#dce6f7}.empty{text-align:center;padding:24px;color:var(--muted)}.section{margin-top:16px}.small{font-size:11px;color:var(--muted)}.footer{color:#65758e;font-size:11px;text-align:center;padding:22px 0}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.check{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin-top:10px}.check input{accent-color:#4c9bff}
+@media(max-width:950px){.kpis{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}@media(max-width:560px){.shell{padding:16px}.top{align-items:flex-start;flex-direction:column}.kpis{gap:10px}.kpi{padding:14px}.kpi .value{font-size:22px}.panel{padding:15px}.formgrid{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="shell">
+<header class="top"><div class="brand"><div class="logo">T</div><div><div class="eyebrow">Funded account workspace</div><h1>Trading Desk</h1><div class="sub">Protect the account. Trade the plan. Earn the payout.</div></div></div><div class="status">● LOCAL TRACKING · NO BROKER CONNECTION</div></header>
+<section class="grid kpis">
+<div class="kpi"><div class="eyebrow">Current equity</div><div class="value" id="equityKpi">$10,000.00</div><div class="foot" id="equityFoot">Starting balance $10,000</div></div>
+<div class="kpi"><div class="eyebrow">Net profit</div><div class="value positive" id="profitKpi">$0.00</div><div class="foot">From starting balance</div></div>
+<div class="kpi"><div class="eyebrow">Consistency score</div><div class="value" id="consistencyKpi">0.0%</div><div class="foot" id="consistencyFoot">Best day ÷ total net profit</div></div>
+<div class="kpi"><div class="eyebrow">Payout progress</div><div class="value" id="payoutKpi">$0 / $1,000</div><div class="foot" id="payoutFoot">Target progress</div></div>
+</section>
+<div class="grid layout">
+<div class="stack">
+<section class="panel"><div class="panelhead"><div><h2>Account overview</h2><p>Set the figures from your prop-firm dashboard.</p></div><span class="tag">ACCOUNT SETTINGS</span></div>
+<div class="formgrid">
+<div class="field"><label>Starting balance ($)</label><input id="starting" type="number" min="0" step="0.01" value="10000"></div>
+<div class="field"><label>Current equity ($)</label><input id="equity" type="number" step="0.01" value="10000"></div>
+<div class="field"><label>Maximum drawdown floor ($)</label><input id="floor" type="number" step="0.01" value="9500"></div>
+<div class="field"><label>Profit target ($)</label><input id="target" type="number" min="0" step="0.01" value="1000"></div>
+<div class="field"><label>Payout cap ($)</label><input id="cap" type="number" min="0" step="0.01" value="1000"></div>
+<div class="field"><label>Consistency limit (%)</label><input id="limit" type="number" min="1" max="100" step="1" value="50"></div>
+</div><div class="actions"><button class="btn primary" id="saveSettings">Save account settings</button><button class="btn" id="resetDemo">Reset sample</button></div>
+</section>
+<section class="panel"><div class="panelhead"><div><h2>Consistency monitor</h2><p>Largest positive trading day divided by total net profit.</p></div><span class="tag" id="consistencyTag">WITHIN LIMIT</span></div>
+<div class="split"><span class="muted">Current consistency</span><strong id="consistencyValue">0.0%</strong></div><div class="bar" id="consistencyBar"><span></span></div>
+<div class="split"><span class="muted">Best day: <b id="bestDay">$0.00</b></span><span class="muted">Net profit: <b id="netProfit">$0.00</b></span></div>
+<div class="notice" id="consistencyNote">Log daily results to calculate your consistency. This uses the common best-day ÷ total-profit formula; confirm your firm's exact rules.</div></section>
+<section class="panel"><div class="panelhead"><div><h2>Daily P&amp;L journal</h2><p>Record closed-day results. Entries stay in this browser.</p></div><span class="tag" id="sessionCount">0 SESSIONS</span></div>
+<div class="formgrid">
+<div class="field"><label>Trading date</label><input id="tradeDate" type="date"></div>
+<div class="field"><label>Daily net P&amp;L ($)</label><input id="dailyPnl" type="number" step="0.01" placeholder="e.g. 125 or -40"></div>
+</div><div class="actions"><button class="btn primary" id="addDay">Add daily result</button><button class="btn" id="exportCsv">Export CSV</button></div>
+<div class="section tablewrap"><table><thead><tr><th>Date</th><th>Daily P&amp;L</th><th>Running total</th><th></th></tr></thead><tbody id="journalRows"><tr><td colspan="4" class="empty">No journal entries yet.</td></tr></tbody></table></div></section>
+</div>
+<aside class="stack">
+<section class="panel"><div class="panelhead"><div><h2>Drawdown protection</h2><p>Distance between equity and your configured floor.</p></div><span class="tag">SAFETY</span></div>
+<div class="eyebrow">Remaining buffer</div><div class="value" style="font-size:28px;font-weight:750;margin:5px 0" id="buffer">$500.00</div>
+<div class="bar" id="bufferBar"><span></span></div><div class="split"><span class="muted">Drawdown floor</span><strong id="floorLabel">$9,500.00</strong></div><div class="split" style="margin-top:8px"><span class="muted">Buffer used</span><strong id="bufferUsed">0%</strong></div><div class="notice" id="drawdownNote">Keep a buffer between current equity and the drawdown floor.</div>
+</section>
+<section class="panel"><div class="panelhead"><div><h2>Risk calculator</h2><p>Estimate position size before entering a trade.</p></div><span class="tag">PLANNING TOOL</span></div>
+<div class="formgrid">
+<div class="field"><label>Risk per trade (%)</label><input id="riskPct" type="number" value="0.25" min="0" step="0.01"></div>
+<div class="field"><label>Stop distance (pips / points)</label><input id="stop" type="number" value="20" min="0" step="0.1"></div>
+<div class="field"><label>Value per pip / point per lot ($)</label><input id="pipValue" type="number" value="10" min="0" step="0.01"></div>
+<div class="field"><label>Daily loss limit (%)</label><input id="dailyLimit" type="number" value="0.5" min="0" step="0.01"></div>
+</div><div class="section"><div class="split"><span class="muted">Risk amount</span><strong id="riskAmount">$25.00</strong></div><div class="split" style="margin-top:8px"><span class="muted">Estimated position size</span><strong id="lotSize">0.125 lots</strong></div><div class="split" style="margin-top:8px"><span class="muted">Daily loss budget</span><strong id="dailyBudget">$50.00</strong></div></div>
+<div class="notice">Position size is an estimate. Verify contract size, pip value, commissions, slippage and your firm's risk rules before placing an order.</div></section>
+<section class="panel"><div class="panelhead"><div><h2>Payout readiness</h2><p>Personal checklist — not a prop-firm approval.</p></div></div>
+<label class="check"><input type="checkbox" id="checkConsistency"> Consistency requirement satisfied</label>
+<label class="check"><input type="checkbox" id="checkDays"> Minimum trading days completed</label>
+<label class="check"><input type="checkbox" id="checkRules"> No open rule violations</label>
+<label class="check"><input type="checkbox" id="checkVerify"> Payout details verified</label>
+<div class="bar"><span id="checkBar"></span></div><div class="split"><span class="muted">Checklist completion</span><strong id="checkCount">0 / 4</strong></div>
+</section>
+</aside></div>
+<div class="footer">Trading Desk · Personal tracking tool · Not connected to a broker or prop firm · Verify all rules with your provider</div>
+</main>
+<script>
+const $=id=>document.getElementById(id), money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(Number(n)||0), num=id=>Number($(id).value)||0;
+const KEY='trading-desk-v1';let state={settings:{starting:10000,equity:10000,floor:9500,target:1000,cap:1000,limit:50},journal:[],checks:[false,false,false,false]};
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(s)state={...state,...s,settings:{...state.settings,...s.settings}}}catch(e){}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(state))}
+function applySettings(){Object.keys(state.settings).forEach(k=>$(k).value=state.settings[k]);}
+function render(){
+const s=state.settings, net=state.journal.reduce((a,x)=>a+x.pnl,0), best=Math.max(0,...state.journal.map(x=>x.pnl)), consistency=net>0?best/net*100:0;
+const equity=Number(s.equity)||0, buffer=equity-Number(s.floor), maxBuffer=Math.max(1,Number(s.starting)-Number(s.floor)), used=Math.max(0,Math.min(100,(1-buffer/maxBuffer)*100));
+$('equityKpi').textContent=money(equity);$('equityFoot').textContent='Starting balance '+money(s.starting);$('profitKpi').textContent=money(equity-s.starting);$('profitKpi').className='value '+(equity>=s.starting?'positive':'negative');
+$('consistencyKpi').textContent=consistency.toFixed(1)+'%';$('payoutKpi').textContent=money(Math.min(Math.max(0,net),s.cap))+' / '+money(s.cap);$('payoutFoot').textContent=Math.max(0,net)>=s.cap?'Cap reached':Math.max(0,net)+' of '+s.cap+' earned';
+$('consistencyValue').textContent=consistency.toFixed(1)+'%';$('bestDay').textContent=money(best);$('netProfit').textContent=money(net);$('consistencyBar').firstElementChild.style.width=Math.min(100,consistency/Math.max(1,s.limit)*100)+'%';
+const ok=net>0&&consistency<=s.limit;$('consistencyTag').textContent=net<=0?'AWAITING PROFIT':ok?'WITHIN LIMIT':'OVER LIMIT';$('consistencyTag').style.color=net<=0?'var(--muted)':ok?'var(--green)':'var(--red)';$('consistencyNote').textContent=net<=0?'Log positive net profit to calculate your consistency.':ok?'Current ratio is within your configured '+s.limit+'% limit. Keep the best day from becoming too large relative to total profit.':'Your best day is above the configured limit. Additional net profitable days may reduce the ratio; confirm the exact formula with your firm.';
+$('buffer').textContent=money(buffer);$('buffer').className='value '+(buffer>0?'positive':'negative');$('floorLabel').textContent=money(s.floor);$('bufferBar').firstElementChild.style.width=Math.max(0,Math.min(100,buffer/maxBuffer*100))+'%';$('bufferBar').classList.toggle('warn',buffer<=maxBuffer*.2);$('bufferUsed').textContent=used.toFixed(0)+'%';$('drawdownNote').textContent=buffer<=0?'WARNING: equity is at or below the configured drawdown floor. Stop and verify account status.':buffer<maxBuffer*.2?'Low buffer: consider standing aside and reviewing risk.':'Buffer is above 20% of the starting floor allowance.';
+$('sessionCount').textContent=state.journal.length+' SESSIONS';let running=0;$('journalRows').innerHTML=state.journal.length?state.journal.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>{running+=x.pnl;return '<tr><td>'+x.date+'</td><td class="'+(x.pnl>=0?'positive':'negative')+'">'+money(x.pnl)+'</td><td>'+money(x.running)+'</td><td><button class="btn danger" data-del="'+x.id+'">Remove</button></td></tr>'}).join(''):'<tr><td colspan="4" class="empty">No journal entries yet.</td></tr>';
+const risk=equity*num('riskPct')/100, stop=num('stop'),pv=num('pipValue');$('riskAmount').textContent=money(risk);$('lotSize').textContent=stop>0&&pv>0?(risk/(stop*pv)).toFixed(3)+' lots':'—';$('dailyBudget').textContent=money(equity*num('dailyLimit')/100);
+const done=state.checks.filter(Boolean).length;$('checkCount').textContent=done+' / 4';$('checkBar').style.width=done*25+'%';
+}
+function saveSettings(){['starting','equity','floor','target','cap','limit'].forEach(k=>state.settings[k]=num(k));persist();render()}
+$('saveSettings').onclick=saveSettings;
+$('resetDemo').onclick=()=>{if(!confirm('Reset account settings, journal and checklist?'))return;state={settings:{starting:10000,equity:10000,floor:9500,target:1000,cap:1000,limit:50},journal:[],checks:[false,false,false,false]};applySettings();persist();render()};
+$('addDay').onclick=()=>{const date=$('tradeDate').value,pnl=Number($('dailyPnl').value);if(!date||$('dailyPnl').value===''){alert('Enter a date and daily P&L.');return}if(state.journal.some(x=>x.date===date)){alert('A result for this date already exists. Remove it first to replace it.');return}const total=state.journal.reduce((a,x)=>a+x.pnl,0)+pnl;state.journal.push({id:Date.now(),date,pnl,running:total});state.settings.equity+=pnl;$('equity').value=state.settings.equity;$('dailyPnl').value='';persist();render()};
+$('journalRows').onclick=e=>{const id=Number(e.target.dataset.del);if(!id)return;const item=state.journal.find(x=>x.id===id);if(!item)return;if(!confirm('Remove this day and reverse its P&L from equity?'))return;state.settings.equity-=item.pnl;state.journal=state.journal.filter(x=>x.id!==id);$('equity').value=state.settings.equity;let run=0;state.journal.forEach(x=>{run+=x.pnl;x.running=run});persist();render()};
+$('exportCsv').onclick=()=>{const rows=[['Date','Daily P&L','Running total'],...state.journal.map(x=>[x.date,x.pnl,x.running])];const csv=rows.map(r=>r.join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='trading-journal.csv';a.click();URL.revokeObjectURL(a.href)};
+['riskPct','stop','pipValue','dailyLimit'].forEach(id=>$(id).addEventListener('input',render));
+['checkConsistency','checkDays','checkRules','checkVerify'].forEach((id,i)=>$(id).onchange=()=>{state.checks[i]=$(id).checked;persist();render()});
+load();applySettings();['checkConsistency','checkDays','checkRules','checkVerify'].forEach((id,i)=>$(id).checked=state.checks[i]);$('tradeDate').value=new Date().toISOString().slice(0,10);render();
+</script></body></html>
